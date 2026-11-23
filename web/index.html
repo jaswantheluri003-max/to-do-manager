@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ordo — Task Atelier</title>
+  <meta name="description" content="Ordo is a quiet, stone-inspired task atelier for the todo-manager project. Compose, settle and keep your ledger.">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#dfe3d8">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%233f4536'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-size='40' fill='%23ecece3' text-anchor='middle'%3EO%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
+</head>
+<body id="top">
+  <a class="skip-link" href="#tasks">Skip to the ledger</a>
+
+  <svg class="sprite" aria-hidden="true" focusable="false">
+    <symbol id="i-plus" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 5v14M5 12h14"/>
+    </symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m5 13 4 4L19 7"/>
+    </symbol>
+    <symbol id="i-search" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="11" cy="11" r="7"/>
+      <path d="m20 20-3.6-3.6"/>
+    </symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/>
+    </symbol>
+    <symbol id="i-pencil" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 20h4L19.5 8.5a2.1 2.1 0 0 0-3-3L5 17v3Z"/>
+      <path d="m14.5 5.5 3 3"/>
+    </symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M9 5v14M15 5v14"/>
+    </symbol>
+    <symbol id="i-play" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m9 6 9 6-9 6V6Z"/>
+    </symbol>
+    <symbol id="i-download" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 4v11m0 0 4-4m-4 4-4-4M5 20h14"/>
+    </symbol>
+    <symbol id="i-close" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m6 6 12 12M18 6 6 18"/>
+    </symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 12h14m0 0-5-5m5 5-5 5"/>
+    </symbol>
+    <symbol id="i-undo" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 10h9a5 5 0 0 1 0 10H8"/>
+      <path d="m8 6-4 4 4 4"/>
+    </symbol>
+  </svg>
+
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="site-header" id="site-header">
+    <nav class="site-nav" aria-label="Primary">
+      <a href="#tasks">Ledger</a>
+      <a href="#insights">Insights</a>
+      <a href="#atelier">Atelier</a>
+    </nav>
+    <a class="brand" href="#top" aria-label="Ordo, back to top">
+      <span class="brand__word">Ordo</span>
+      <span class="brand__tag">Task Atelier</span>
+    </a>
+    <div class="site-actions">
+      <button class="menu-toggle" type="button" id="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span class="menu-toggle__bars" aria-hidden="true"><span></span><span></span></span>
+      </button>
+      <span class="site-date" id="today-label"></span>
+      <button class="pill pill--solid pill--sm" type="button" data-new-task>
+        <svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg>
+        New task
+      </button>
+    </div>
+    <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile" hidden>
+      <a href="#tasks"><span aria-hidden="true">01</span>Ledger</a>
+      <a href="#insights"><span aria-hidden="true">02</span>Insights</a>
+      <a href="#atelier"><span aria-hidden="true">03</span>Atelier</a>
+      <p class="mobile-menu__hint"><kbd>N</kbd> compose <span aria-hidden="true">·</span> <kbd>/</kbd> search</p>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="shell hero__grid">
+        <figure class="hero__media">
+          <video class="hero__video" id="hero-film" autoplay muted loop playsinline preload="metadata" poster="assets/hero-poster.jpg">
+            <source src="assets/hero.mp4" type="video/mp4">
+          </video>
+          <div class="hero__scallop" aria-hidden="true"></div>
+          <figcaption class="hero__caption">
+            <span>Limestone study</span>
+            <span>N° 01</span>
+          </figcaption>
+          <button class="film-toggle" type="button" id="film-toggle" aria-label="Pause background film">
+            <svg class="icon" aria-hidden="true"><use href="#i-pause"/></svg>
+          </button>
+        </figure>
+
+        <div class="hero__content">
+          <p class="eyebrow"><span class="eyebrow__rule"></span>Task atelier — est. MMXXVI</p>
+          <h1 class="display" id="hero-title">Tasks,<br><em>set in stone.</em></h1>
+          <p class="lede">A quiet ledger for the work that matters. Compose it with care, settle it with a click, and leave the rest to rest.</p>
+          <div class="hero__actions">
+            <button class="pill pill--solid pill--lg" type="button" data-new-task>
+              Compose a task
+              <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+            </button>
+            <a class="link-underline" href="#tasks">Open the ledger</a>
+          </div>
+          <dl class="hero__stats" aria-label="Ledger at a glance">
+            <div>
+              <dt>In motion</dt>
+              <dd id="stat-open">0</dd>
+            </div>
+            <div>
+              <dt>Settled</dt>
+              <dd id="stat-done">0</dd>
+            </div>
+            <div>
+              <dt>Overdue</dt>
+              <dd id="stat-overdue">0</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <section class="workspace shell" id="tasks" aria-labelledby="ledger-title">
+      <div class="section-head reveal">
+        <div>
+          <p class="eyebrow">The ledger</p>
+          <h2 class="section-title" id="ledger-title">What’s in motion.</h2>
+        </div>
+        <p class="section-date" id="ledger-date"></p>
+      </div>
+
+      <div class="workspace__grid">
+        <div class="ledger">
+          <form class="composer reveal" id="composer" novalidate>
+            <div class="composer__top">
+              <label class="sr-only" for="task-title">Task title</label>
+              <input class="composer__input" id="task-title" name="title" type="text" maxlength="100" autocomplete="off" placeholder="Name the thing that matters…">
+              <kbd class="composer__hint" title="Press N anywhere to compose">N</kbd>
+            </div>
+
+            <div class="composer__details">
+              <div class="field field--note">
+                <label for="task-desc">Note</label>
+                <input id="task-desc" name="description" type="text" maxlength="500" autocomplete="off" placeholder="A line of context, if it helps">
+              </div>
+              <div class="field">
+                <label for="task-category">Category</label>
+                <input id="task-category" name="category" type="text" maxlength="30" list="category-options" autocomplete="off" placeholder="General">
+              </div>
+              <fieldset class="field field--priority">
+                <legend>Priority</legend>
+                <div class="prio-picker">
+                  <label class="prio" title="Low">
+                    <input type="radio" name="priority" value="1">
+                    <span>I</span>
+                  </label>
+                  <label class="prio" title="Minor">
+                    <input type="radio" name="priority" value="2">
+                    <span>II</span>
+                  </label>
+                  <label class="prio" title="Medium">
+                    <input type="radio" name="priority" value="3" checked>
+                    <span>III</span>
+                  </label>
+                  <label class="prio" title="High">
+                    <input type="radio" name="priority" value="4">
+                    <span>IV</span>
+                  </label>
+                  <label class="prio" title="Urgent">
+                    <input type="radio" name="priority" value="5">
+                    <span>V</span>
+                  </label>
+                </div>
+              </fieldset>
+              <div class="field field--due">
+                <label for="task-due">Due</label>
+                <input id="task-due" name="due" type="date">
+              </div>
+              <div class="composer__buttons">
+                <button class="pill pill--solid" type="submit" id="composer-submit">Add to ledger</button>
+                <button class="text-btn composer__cancel" type="button" id="composer-cancel" hidden>Cancel</button>
+              </div>
+            </div>
+
+            <datalist id="category-options">
+              <option value="Work"></option>
+              <option value="Personal"></option>
+              <option value="Health"></option>
+              <option value="Learning"></option>
+              <option value="General"></option>
+            </datalist>
+            <p class="composer__error" id="composer-error" role="alert" hidden></p>
+          </form>
+
+          <div class="toolbar reveal">
+            <div class="segmented" role="group" aria-label="Filter tasks">
+              <button type="button" class="seg" data-filter="all" aria-pressed="true">All <span class="count" data-count="all">0</span></button>
+              <button type="button" class="seg" data-filter="open" aria-pressed="false">Open <span class="count" data-count="open">0</span></button>
+              <button type="button" class="seg" data-filter="done" aria-pressed="false">Settled <span class="count" data-count="done">0</span></button>
+              <button type="button" class="seg" data-filter="overdue" aria-pressed="false">Overdue <span class="count" data-count="overdue">0</span></button>
+            </div>
+            <div class="toolbar__tools">
+              <label class="search">
+                <svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>
+                <span class="sr-only">Search tasks</span>
+                <input id="search" type="search" placeholder="Search the ledger" autocomplete="off">
+              </label>
+              <label class="select-wrap">
+                <span class="sr-only">Filter by category</span>
+                <select id="category-filter">
+                  <option value="all">All categories</option>
+                </select>
+              </label>
+            </div>
+          </div>
+
+          <div class="task-groups" id="task-groups">
+            <section class="task-group" data-group="open" aria-labelledby="open-title">
+              <header class="task-group__head">
+                <h3 id="open-title">In motion <span class="group-count" id="open-count">0</span></h3>
+              </header>
+              <ul class="task-list" id="open-list" role="list"></ul>
+              <p class="empty" id="open-empty" hidden>Nothing pressing. <em>Breathe.</em></p>
+            </section>
+
+            <section class="task-group" data-group="done" aria-labelledby="done-title">
+              <header class="task-group__head">
+                <h3 id="done-title">Settled <span class="group-count" id="done-count">0</span></h3>
+                <button class="text-btn" type="button" id="toggle-done" aria-expanded="true">Hide</button>
+              </header>
+              <div id="done-body">
+                <ul class="task-list" id="done-list" role="list"></ul>
+                <p class="empty" id="done-empty" hidden>Nothing settled yet. The day is young.</p>
+              </div>
+            </section>
+
+            <div class="empty empty--global" id="ledger-empty" hidden>
+              <p>Nothing in the ledger matches that.</p>
+              <button class="text-btn" type="button" id="clear-filters">Clear filters</button>
+            </div>
+          </div>
+        </div>
+
+        <aside class="rail" id="insights" aria-labelledby="insights-title">
+          <h2 class="sr-only" id="insights-title">Insights</h2>
+
+          <div class="rail-card rail-card--progress reveal">
+            <p class="eyebrow eyebrow--light">Completion</p>
+            <div class="ring-wrap">
+              <svg class="ring" viewBox="0 0 128 128" role="img" aria-label="Completion rate">
+                <circle class="ring__track" cx="64" cy="64" r="54"/>
+                <circle class="ring__fill" id="ring-fill" cx="64" cy="64" r="54"/>
+              </svg>
+              <p class="ring__value"><span id="completion-rate">0</span><small>%</small></p>
+            </div>
+            <p class="rail-note" id="completion-note">A ledger at rest.</p>
+            <p class="rail-sub"><span id="rail-open">0 open</span><span id="rail-total">0 in total</span></p>
+          </div>
+
+          <div class="rail-card reveal">
+            <p class="eyebrow">By category</p>
+            <ul class="bars" id="category-bars"></ul>
+            <p class="empty empty--small" id="bars-empty">No open tasks.</p>
+          </div>
+
+          <div class="rail-card reveal">
+            <p class="eyebrow">Overdue</p>
+            <ul class="mini-list" id="overdue-list"></ul>
+            <p class="empty empty--small" id="overdue-empty">Nothing overdue. Rare and fine.</p>
+          </div>
+
+          <figure class="rail-figure reveal">
+            <img src="assets/interior.jpg" width="1000" height="696" alt="A stone-effect wall panel in a quiet, plant-filled interior" loading="lazy">
+            <figcaption>
+              <span>In situ — N° 02</span>
+              <span>Petra</span>
+            </figcaption>
+          </figure>
+        </aside>
+      </div>
+    </section>
+
+    <section class="atelier" id="atelier" aria-labelledby="atelier-title">
+      <div class="shell atelier__grid">
+        <figure class="atelier__media reveal">
+          <img src="assets/stone.jpg" width="1000" height="800" alt="Close-up of deeply textured limestone panels" loading="lazy">
+          <figcaption>Cut stone, quiet finish — N° 01</figcaption>
+        </figure>
+        <div class="atelier__copy reveal">
+          <p class="eyebrow"><span class="eyebrow__rule"></span>The atelier</p>
+          <h2 class="display display--sm" id="atelier-title">Every task a stone,<br><em>placed with intent.</em></h2>
+          <p class="atelier__lede">Ordo is the web atelier of the todo-manager project — the same local ledger, given room to breathe. No accounts, no clouds; just a quiet surface for the work in front of you.</p>
+          <ul class="features">
+            <li><span>01</span><p>Kept in this browser. Private, immediate, yours.</p></li>
+            <li><span>02</span><p>Markdown and CSV exports, true to the console app.</p></li>
+            <li><span>03</span><p>Keyboard-first — <kbd>N</kbd> to compose, <kbd>/</kbd> to search, <kbd>Esc</kbd> to step back.</p></li>
+          </ul>
+          <div class="atelier__actions">
+            <button class="pill pill--outline" type="button" id="export-md">
+              <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>
+              Markdown
+            </button>
+            <button class="pill pill--outline" type="button" id="export-csv">
+              <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>
+              CSV
+            </button>
+            <button class="text-btn" type="button" id="load-samples">Load sample ledger</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="band" aria-labelledby="band-title">
+      <p class="eyebrow eyebrow--light">A quieter practice</p>
+      <h2 class="band__quote" id="band-title">Make room for<br><em>what matters.</em></h2>
+      <p class="band__copy">A smaller list is a clearer mind.</p>
+      <button class="pill pill--light pill--lg" type="button" data-new-task>
+        Compose a task
+        <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+      </button>
+      <p class="band__meta">Ordo — Task Atelier · MMXXVI</p>
+    </section>
+
+    <footer class="site-footer">
+      <div class="footer__blob" aria-hidden="true"><span>O</span></div>
+      <p class="footer__line">Inspired by stone · Made for focus</p>
+      <div class="footer__grid">
+        <p class="footer__note">Ordo is the web atelier of the todo-manager project. Your ledger lives in this browser; nothing leaves your desk.</p>
+        <nav class="footer__nav" aria-label="Footer">
+          <a href="#top">Top</a>
+          <a href="#tasks">Ledger</a>
+          <a href="#insights">Insights</a>
+          <a href="#atelier">Atelier</a>
+        </nav>
+        <p class="footer__fine">MMXXVI<br>Data kept locally</p>
+      </div>
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden>
+    <svg class="icon toast__icon" aria-hidden="true"><use href="#i-undo"/></svg>
+    <span class="toast__msg" id="toast-msg"></span>
+    <button class="toast__action" type="button" id="toast-action" hidden>Undo</button>
+    <button class="toast__close" type="button" id="toast-close" aria-label="Dismiss">
+      <svg class="icon" aria-hidden="true"><use href="#i-close"/></svg>
+    </button>
+  </div>
+  <p class="sr-only" id="live" aria-live="polite"></p>
+
+  <script src="app.js" defer></script>
+</body>
+</html>

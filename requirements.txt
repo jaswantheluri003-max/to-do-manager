@@ -1,0 +1,2 @@
+# To-Do List Manager - Zero dependencies (uses only Python Standard Library)
+# Python 3.10+

@@ -1,0 +1,42 @@
+id,title,description,category,priority,completed,created_at,completed_at,due_date
+seed000,Complete project proposal,Write and submit Q4 project proposal,Work,5,False,2026-11-15T09:00:00,,2026-11-20
+seed001,Team meeting,Weekly sync with development team,Work,3,False,2026-11-15T09:05:00,,2026-11-18
+seed002,Code review,Review PR #234 for authentication module,Work,4,False,2026-11-15T09:10:00,,2026-11-17
+seed003,Buy groceries,"Milk, eggs, bread, vegetables",Personal,2,False,2026-11-15T09:15:00,,2026-11-16
+seed004,Gym session,Cardio and strength training,Health,3,False,2026-11-15T09:20:00,,2026-11-16
+seed005,Read book,Finish chapter 5 of Clean Code,Learning,2,False,2026-11-15T09:25:00,,2026-11-25
+seed006,Call dentist,Schedule annual checkup,Health,1,False,2026-11-15T09:30:00,,2026-11-30
+seed007,Pay bills,"Electricity, internet, phone",Personal,4,True,2026-11-15T09:35:00,2026-11-23T10:34:01.039698,2026-11-15
+seed008,Plan vacation,Research destinations for December,Personal,1,False,2026-11-15T09:40:00,,2026-12-01
+seed009,Learn Python,Complete async/await tutorial,Learning,3,False,2026-11-15T09:45:00,,2026-11-22
+seed010,Submit expense report,Q3 travel reimbursement filing,Work,5,False,2026-11-15T09:50:00,,2026-11-19
+seed011,Update resume,Add latest project experience,Personal,3,False,2026-11-15T09:55:00,,2026-11-25
+seed012,Doctor appointment,Annual physical examination,Health,2,False,2026-11-15T10:00:00,,2026-11-28
+seed013,Fix login bug,Resolve token refresh issue on mobile,Work,5,True,2026-11-15T10:05:00,2026-11-23T10:34:01.039749,2026-11-18
+seed014,Water the plants,Office and home potted plants,Personal,1,False,2026-11-15T10:10:00,,
+seed015,Prepare presentation,Q4 all-hands deck slides,Work,4,False,2026-11-15T10:15:00,,2026-11-23
+seed016,Backup database,Weekly production snapshot verification,Work,5,False,2026-11-15T10:20:00,,2026-11-21
+seed017,Call mom,Birthday wish and catch-up,Personal,2,False,2026-11-15T10:25:00,,2026-11-20
+seed018,Read whitepaper,Zero trust architecture overview,Learning,3,False,2026-11-15T10:30:00,,2026-11-29
+seed019,Schedule HVAC service,Fall maintenance check,Personal,2,False,2026-11-15T10:35:00,,2026-11-25
+seed020,Submit timesheet,Weekly hours entry,Work,4,False,2026-11-15T10:40:00,,2026-11-18
+seed021,Buy birthday gift,Sister's 30th celebration,Personal,3,False,2026-11-15T10:45:00,,2026-11-25
+seed022,Dentist follow up,Post-cleaning checkup,Health,2,False,2026-11-15T10:50:00,,2026-12-05
+seed023,Refactor auth module,Extract shared middleware,Work,5,False,2026-11-15T10:55:00,,2026-11-24
+seed024,Laundry,Wash and fold weekly load,Personal,1,False,2026-11-15T11:00:00,,
+seed025,Deposit checks,Scan and upload via mobile app,Personal,2,False,2026-11-15T11:05:00,,2026-11-22
+seed026,Attend webinar,Cloud security best practices,Learning,2,False,2026-11-15T11:10:00,,2026-11-26
+seed027,Renew car registration,DMV annual renewal,Personal,4,False,2026-11-15T11:15:00,,2026-11-20
+seed028,Write blog post,Lessons learned from migration,Learning,3,False,2026-11-15T11:20:00,,2026-12-02
+seed029,Buy cat food,Restock premium kibble,Personal,1,False,2026-11-15T11:25:00,,
+seed030,Replace smoke detector batteries,Home safety check,Personal,4,False,2026-11-15T11:30:00,,2026-11-25
+seed031,Deploy hotfix,Critical production patch v1.2.1,Work,5,False,2026-11-15T11:35:00,,2026-11-19
+seed032,Review vendor contracts,Annual SLA renegotiation,Work,3,False,2026-11-15T11:40:00,,2026-12-01
+seed033,Call plumber,Kitchen sink leak repair,Personal,5,False,2026-11-15T11:45:00,,2026-11-19
+seed034,Schedule eye exam,Annual vision check,Health,2,False,2026-11-15T11:50:00,,2026-12-10
+seed035,Prepare interview questions,Senior engineer candidate screen,Work,4,False,2026-11-15T11:55:00,,2026-11-23
+seed036,Buy heating oil,Winter tank refill,Personal,4,False,2026-11-15T12:00:00,,2026-11-25
+seed037,Update will,Estate planning review,Personal,2,False,2026-11-15T12:05:00,,2026-12-15
+seed038,Malformed priority task,Task with out-of-range priority,Work,5,False,2026-11-15T12:10:00,,2026-11-20
+seed039,Missing due date,Task without a due date,Personal,2,False,2026-11-15T12:15:00,,
+seed040,Empty title edge,,General,1,False,2026-11-15T12:20:00,,

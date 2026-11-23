@@ -1,0 +1,16 @@
+TASK REPORT
+==================================================
+
+Pending Tasks: 10
+  [aa50a88f] Complete project proposal [Work] Priority: 5 (Due: 2026-11-20)
+  [f5029d1a] Code review [Work] Priority: 4 (Due: 2026-11-17)
+  [f341e046] Pay bills [Personal] Priority: 4 (Due: 2026-11-15) [OVERDUE]
+  [e658bc1e] Team meeting [Work] Priority: 3 (Due: 2026-11-18)
+  [a7b3b761] Gym session [Health] Priority: 3 (Due: 2026-11-16)
+  [eeb801de] Learn Python [Learning] Priority: 3 (Due: 2026-11-22)
+  [0534ebad] Buy groceries [Personal] Priority: 2 (Due: 2026-11-16)
+  [ca44b783] Read book [Learning] Priority: 2 (Due: 2026-11-25)
+  [740f650e] Call dentist [Health] Priority: 1 (Due: 2026-11-30)
+  [be096073] Plan vacation [Personal] Priority: 1 (Due: 2026-12-01)
+
+Completed Tasks: 0

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CampusSolve &middot; To-Do Manager</title>
+  <meta name="description" content="CampusSolve To-Do List Manager &mdash; local JSON productivity engine.">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0B0B0C">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
+</head>
+<body>
+  <a class="skip-link" href="#workspace">Skip to workspace</a>
+
+  <header class="site-header" id="site-header">
+    <div class="header-inner shell">
+      <div class="brand" aria-label="CampusSolve">
+        <span class="brand__word">CAMPUSSOLVE</span>
+        <span class="brand__tag">TO-DO MANAGER &middot; LOCAL JSON</span>
+      </div>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="#overview">Overview</a>
+        <a href="#workspace">Workspace</a>
+        <a href="#analytics">Analytics</a>
+        <a href="#create">Create</a>
+        <a href="#exports">Exports</a>
+      </nav>
+      <div class="site-actions">
+        <span class="sync-indicator" id="sync-indicator" title="data/tasks.json">synced</span>
+        <a href="#create" class="btn btn--gold" id="nav-new-task">New Task &rarr;</a>
+        <button class="menu-toggle" id="menu-toggle" aria-label="Open menu" aria-expanded="false"></button>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero" id="overview" aria-labelledby="hero-title">
+    <div class="hero__grid shell">
+      <div class="hero__ambient" aria-hidden="true"></div>
+      <div class="hero__content">
+        <p class="eyebrow">&bull; PROJECT #101 &middot; LOCAL PRODUCTIVITY ENGINE</p>
+        <h1 class="display" id="hero-title">TASK CONTROL<br><span class="display__mid">AND</span> CLARITY</h1>
+        <div class="hero__bottom">
+          <p class="hero__tagline">Where Details Matter.</p>
+          <div class="hero__meta">
+            <a href="#workspace" class="btn btn--gold">Open Workspace &rarr;</a>
+            <span class="divider">|</span>
+            <span class="task-count" id="hero-task-count">0</span> tasks
+          </div>
+          <span class="scroll-cue" aria-hidden="true">SCROLL</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="kpi-strip" id="kpis" aria-labelledby="kpi-title">
+    <div class="shell">
+      <div class="kpi__head">
+        <p class="eyebrow">SYSTEM TELEMETRY</p>
+        <h2 class="kpi__title" id="kpi-title">The Work You Track Matters Just As Much</h2>
+      </div>
+      <div class="kpi__grid" id="kpi-grid">
+        <div class="kpi-card">
+          <span class="kpi-index">01</span>
+          <p class="kpi-label">TOTAL TASKS</p>
+          <span class="kpi-value" id="kpi-total">0</span>
+          <span class="kpi-sub" id="kpi-total-sub">pending &middot; completed</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-index">02</span>
+          <p class="kpi-label">COMPLETION RATE</p>
+          <span class="kpi-value" id="kpi-rate">0%</span>
+          <div class="kpi-progress"><span class="kpi-progress__fill" id="kpi-progress-fill"></span></div>
+        </div>
+        <div class="kpi-card kpi-card--alert">
+          <span class="kpi-index">03</span>
+          <p class="kpi-label">OVERDUE ALERTS</p>
+          <span class="kpi-value kpi-value--alert" id="kpi-overdue">0</span>
+          <span class="kpi-sub" id="kpi-overdue-sub">threshold flag</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-index">04</span>
+          <p class="kpi-label">AVG TURNAROUND</p>
+          <span class="kpi-value" id="kpi-turnaround">0h</span>
+          <span class="kpi-sub">avg time-to-completion</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="workspace" id="workspace" aria-labelledby="workspace-title">
+    <div class="shell workspace__shell">
+      <div class="workspace__head reveal">
+        <p class="eyebrow">WHAT YOU MANAGE</p>
+        <h2 class="workspace__title" id="workspace-title">FOUR PRIORITIES, ONE ENGINE</h2>
+      </div>
+      <div class="workspace__grid">
+        <aside class="workspace__sidebar reveal sticky-sidebar">
+          <div class="search-card">
+            <label class="sr-only" for="ws-search">Search tasks</label>
+            <input type="search" id="ws-search" placeholder="Search titles &amp; descriptions..." autocomplete="off">
+          </div>
+          <div class="filter-list">
+            <button class="filter-row filter-row--active" data-filter="all">
+              <span class="filter-index">01</span>
+              <span class="filter-label">ALL TASKS</span>
+              <span class="filter-count" id="fcount-all">0</span>
+              <span class="filter-arrow">&rarr;</span>
+            </button>
+            <button class="filter-row" data-filter="overdue">
+              <span class="filter-index">02</span>
+              <span class="filter-label">CRITICAL &amp; OVERDUE</span>
+              <span class="filter-count" id="fcount-overdue">0</span>
+              <span class="filter-arrow">&rarr;</span>
+            </button>
+            <button class="filter-row" data-filter="category">
+              <span class="filter-index">03</span>
+              <span class="filter-label">ACADEMIC &amp; WORK</span>
+              <span class="filter-count" id="fcount-category">0</span>
+              <span class="filter-arrow">&rarr;</span>
+            </button>
+            <button class="filter-row" data-filter="completed">
+              <span class="filter-index">04</span>
+              <span class="filter-label">COMPLETED</span>
+              <span class="filter-count" id="fcount-completed">0</span>
+              <span class="filter-arrow">&rarr;</span>
+            </button>
+          </div>
+        </aside>
+
+        <div class="workspace__main reveal">
+          <div class="ledger-panel">
+            <div class="ledger__head">
+              <p class="eyebrow eyebrow--sub">TASK LEDGER</p>
+              <div class="pills">
+                <button class="pill pill--active" data-priority="all">ALL</button>
+                <button class="pill" data-priority="5">CRITICAL</button>
+                <button class="pill" data-priority="4">HIGH</button>
+                <button class="pill" data-priority="3">MEDIUM</button>
+                <button class="pill" data-priority="2">LOW</button>
+                <button class="pill" data-priority="1">LOW</button>
+              </div>
+            </div>
+            <div class="ledger__viewport" id="ledger-viewport">
+              <table class="ledger-table" id="ledger-table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th>Priority</th>
+                    <th>Due</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="ledger-tbody"></tbody>
+              </table>
+              <div class="ledger-pagination">
+                <button class="pag-btn" id="pag-prev">&lt; PREV</button>
+                <span class="pag-page" id="pag-page">Page <span id="pag-page-num">1</span> of <span id="pag-total">1</span></span>
+                <button class="pag-btn" id="pag-next">NEXT &gt;</button>
+              </div>
+              <p class="ledger-empty" id="ledger-empty" hidden>No tasks match the current filters.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="analytics" id="analytics" aria-labelledby="analytics-title">
+    <div class="shell">
+      <div class="analytics__head">
+        <div>
+          <p class="eyebrow">PERFORMANCE INSIGHTS</p>
+          <h2 class="analytics__title" id="analytics-title">EXECUTIVE ANALYTICS</h2>
+        </div>
+        <button class="btn btn--ghost" id="btn-refresh-metrics">Refresh Metrics &rarr;</button>
+      </div>
+      <div class="bento" id="bento">
+        <article class="bento-card bento--wide reveal">
+          <p class="bento-eyebrow">Category Distribution</p>
+          <div class="bar-chart" id="chart-category"></div>
+        </article>
+        <article class="bento-card reveal">
+          <p class="bento-eyebrow">Priority Breakdown</p>
+          <div class="ring-chart" id="chart-priority"></div>
+        </article>
+        <article class="bento-card reveal">
+          <p class="bento-eyebrow">Threshold &amp; Risk Watchlist</p>
+          <ul class="watchlist" id="watchlist"></ul>
+        </article>
+        <article class="bento-card bento--tall reveal">
+          <p class="bento-eyebrow">Bulk CSV Ingestion</p>
+          <div class="dropzone" id="dropzone">
+            <p class="dropzone__label">Drop seed_tasks.csv or click to browse</p>
+            <input type="file" id="csv-input" accept=".csv" hidden>
+            <button class="btn btn--gold btn--small" id="btn-pick-csv">Choose File</button>
+          </div>
+          <div class="import-log" id="import-log"></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="create-section" id="create" aria-labelledby="create-title">
+    <div class="shell create__shell">
+      <div class="create__head reveal">
+        <p class="eyebrow">NEW RECORD</p>
+        <h1 class="create__title" id="create-title">ADD A NEW TASK</h1>
+        <p class="create__helper">Enter the task details below. All fields are validated before submission.</p>
+        <p class="create__meta"><span class="dot"></span> data/tasks.json &middot; Atomic Write Enabled</p>
+      </div>
+      <div class="create__form reveal">
+        <form id="create-form" novalidate>
+          <div class="form-grid">
+            <div class="field">
+              <label class="field__label" for="cf-title">TITLE</label>
+              <input type="text" id="cf-title" name="title" maxlength="100" placeholder="Task title (3&ndash;100 chars)" required>
+              <p class="field__error" id="cf-title-error" hidden></p>
+            </div>
+            <div class="field field--full">
+              <label class="field__label" for="cf-category">CATEGORY</label>
+              <select id="cf-category" name="category">
+                <option value="General">General</option>
+                <option value="Work">Work</option>
+                <option value="Personal">Personal</option>
+                <option value="Health">Health</option>
+                <option value="Learning">Learning</option>
+              </select>
+              <p class="field__error" id="cf-category-error" hidden></p>
+            </div>
+            <div class="field field--full">
+              <label class="field__label" for="cf-priority">PRIORITY</label>
+              <div class="seg-picker" id="cf-priority">
+                <button type="button" class="seg seg--active" data-value="1">1 Low</button>
+                <button type="button" class="seg" data-value="2">2</button>
+                <button type="button" class="seg" data-value="3">3</button>
+                <button type="button" class="seg" data-value="4">4 Critical</button>
+                <button type="button" class="seg" data-value="5">5 Urgent</button>
+              </div>
+              <input type="hidden" name="priority" value="1">
+              <p class="field__error" id="cf-priority-error" hidden></p>
+            </div>
+            <div class="field field--full">
+              <label class="field__label" for="cf-due">DUE DATE</label>
+              <input type="date" id="cf-due" name="due_date">
+              <p class="field__error" id="cf-due-error" hidden></p>
+            </div>
+            <div class="field field--full">
+              <label class="field__label" for="cf-desc">DESCRIPTION</label>
+              <textarea id="cf-desc" name="description" maxlength="300" placeholder="Max 300 characters"></textarea>
+              <p class="field__error" id="cf-desc-error" hidden></p>
+            </div>
+          </div>
+          <button type="submit" class="btn btn--gold btn--full" id="cf-submit">Save Task to JSON &rarr;</button>
+          <p class="form__note" id="form-note" hidden></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="exports" id="exports" aria-labelledby="exports-title">
+    <div class="shell">
+      <div class="exports__bar">
+        <p class="eyebrow eyebrow--sub">EXPORT &amp; AUDIT ARTIFACTS</p>
+        <div class="exports__actions">
+          <button class="btn btn--outline" data-format="md">Markdown Report (.md)</button>
+          <button class="btn btn--outline" data-format="csv">CSV Dataset (.csv)</button>
+          <button class="btn btn--outline" data-format="txt">Plain-Text Audit Log (.txt)</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="shell footer__grid">
+      <div class="footer__brand">
+        <span class="brand__word">CAMPUSSOLVE</span>
+        <p class="footer__fine">To-Do Manager &middot; Project #101</p>
+      </div>
+      <nav class="footer__nav" aria-label="Footer">
+        <a href="#overview">Overview</a>
+        <a href="#workspace">Workspace</a>
+        <a href="#analytics">Analytics</a>
+        <a href="#create">Create</a>
+        <a href="#exports">Exports</a>
+      </nav>
+      <div class="footer__health">
+        <p class="footer__label">Storage Health</p>
+        <span class="health-pill health--ok" id="footer-health">data/tasks.json &middot; atomic write</span>
+      </div>
+      <div class="footer__fine">CampusSolve &middot; Local JSON &middot; Zero Dependencies</div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden>
+    <span class="toast__msg" id="toast-msg"></span>
+    <button class="toast__close" id="toast-close" aria-label="Dismiss">&times;</button>
+  </div>
+
+  <script src="app.js" defer></script>
+</body>
+</html>

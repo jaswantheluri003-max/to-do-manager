@@ -1,0 +1,112 @@
+[
+  {
+    "id": "aa50a88f",
+    "title": "Complete project proposal",
+    "description": "Write and submit Q4 project proposal",
+    "category": "Work",
+    "priority": 5,
+    "completed": true,
+    "created_at": "2026-11-15T19:29:32.675334",
+    "completed_at": "2026-11-19T11:53:11.734004",
+    "due_date": "2026-11-20"
+  },
+  {
+    "id": "e658bc1e",
+    "title": "Team meeting",
+    "description": "Weekly sync with development team",
+    "category": "Work",
+    "priority": 3,
+    "completed": false,
+    "created_at": "2026-11-15T19:29:32.676061",
+    "completed_at": null,
+    "due_date": "2026-11-18"
+  },
+  {
+    "id": "f5029d1a",
+    "title": "Code review",
+    "description": "Review PR #234 for authentication module",
+    "category": "Work",
+    "priority": 4,
+    "completed": false,
+    "created_at": "2026-11-15T19:29:32.676739",
+    "completed_at": null,
+    "due_date": "2026-11-17"
+  },
+  {
+    "id": "0534ebad",
+    "title": "Buy groceries",
+    "description": "Milk, eggs, bread, vegetables",
+    "category": "Personal",
+    "priority": 2,
+    "completed": false,
+    "created_at": "2026-11-15T19:29:32.677454",
+    "completed_at": null,
+    "due_date": "2026-11-16"
+  },
+  {
+    "id": "a7b3b761",
+    "title": "Gym session",
+    "description": "Cardio and strength training",
+    "category": "Health",
+    "priority": 3,
+    "completed": false,
+    "created_at": "2026-11-15T19:29:32.678195",
+    "completed_at": null,
+    "due_date": "2026-11-16"
+  },
+  {
+    "id": "ca44b783",
+    "title": "Read book",
+    "description": "Finish chapter 5 of Clean Code",
+    "category": "Learning",
+    "priority": 2,
+    "completed": false,
+    "created_at": "2026-11-15T19:29:32.679015",
+    "completed_at": null,
+    "due_date": "2026-11-25"
+  },
+  {
+    "id": "740f650e",
+    "title": "Call dentist",
+    "description": "Schedule annual checkup",
+    "category": "Health",
+    "priority": 1,
+    "completed": false,
+    "created_at": "2026-11-15T19:29:32.679796",
+    "completed_at": null,
+    "due_date": "2026-11-30"
+  },
+  {
+    "id": "f341e046",
+    "title": "Pay bills",
+    "description": "Electricity, internet, phone",
+    "category": "Personal",
+    "priority": 4,
+    "completed": true,
+    "created_at": "2026-11-15T19:29:32.680594",
+    "completed_at": "2026-11-20T10:32:06.227514",
+    "due_date": "2026-11-15"
+  },
+  {
+    "id": "be096073",
+    "title": "Plan vacation",
+    "description": "Research destinations for December",
+    "category": "Personal",
+    "priority": 1,
+    "completed": false,
+    "created_at": "2026-11-15T19:29:32.681361",
+    "completed_at": null,
+    "due_date": "2026-12-01"
+  },
+  {
+    "id": "eeb801de",
+    "title": "Learn Python",
+    "description": "Complete async/await tutorial",
+    "category": "Learning",
+    "priority": 3,
+    "completed": false,
+    "created_at": "2026-11-15T19:29:32.682092",
+    "completed_at": null,
+    "due_date": "2026-11-22"
+  }
+]

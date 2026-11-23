@@ -1,0 +1,49 @@
+TASK AUDIT LOG
+==================================================
+
+Generated: 2026-11-23 10:58:59
+
+Pending Tasks: 39
+  [seed000] Complete project proposal [Work] Priority: 5 (Due: 2026-11-20) [OVERDUE]
+  [seed010] Submit expense report [Work] Priority: 5 (Due: 2026-11-19) [OVERDUE]
+  [seed016] Backup database [Work] Priority: 5 (Due: 2026-11-21) [OVERDUE]
+  [seed023] Refactor auth module [Work] Priority: 5 (Due: 2026-11-24)
+  [seed031] Deploy hotfix [Work] Priority: 5 (Due: 2026-11-19) [OVERDUE]
+  [seed033] Call plumber [Personal] Priority: 5 (Due: 2026-11-19) [OVERDUE]
+  [seed038] Malformed priority task [Work] Priority: 5 (Due: 2026-11-20) [OVERDUE]
+  [seed002] Code review [Work] Priority: 4 (Due: 2026-11-17) [OVERDUE]
+  [seed015] Prepare presentation [Work] Priority: 4 (Due: 2026-11-23) [OVERDUE]
+  [seed020] Submit timesheet [Work] Priority: 4 (Due: 2026-11-18) [OVERDUE]
+  [seed027] Renew car registration [Personal] Priority: 4 (Due: 2026-11-20) [OVERDUE]
+  [seed030] Replace smoke detector batteries [Personal] Priority: 4 (Due: 2026-11-25)
+  [seed035] Prepare interview questions [Work] Priority: 4 (Due: 2026-11-23) [OVERDUE]
+  [seed036] Buy heating oil [Personal] Priority: 4 (Due: 2026-11-25)
+  [seed001] Team meeting [Work] Priority: 3 (Due: 2026-11-18) [OVERDUE]
+  [seed004] Gym session [Health] Priority: 3 (Due: 2026-11-16) [OVERDUE]
+  [seed009] Learn Python [Learning] Priority: 3 (Due: 2026-11-22) [OVERDUE]
+  [seed011] Update resume [Personal] Priority: 3 (Due: 2026-11-25)
+  [seed018] Read whitepaper [Learning] Priority: 3 (Due: 2026-11-29)
+  [seed021] Buy birthday gift [Personal] Priority: 3 (Due: 2026-11-25)
+  [seed028] Write blog post [Learning] Priority: 3 (Due: 2026-12-02)
+  [seed032] Review vendor contracts [Work] Priority: 3 (Due: 2026-12-01)
+  [seed003] Buy groceries [Personal] Priority: 2 (Due: 2026-11-16) [OVERDUE]
+  [seed005] Read book [Learning] Priority: 2 (Due: 2026-11-25)
+  [seed012] Doctor appointment [Health] Priority: 2 (Due: 2026-11-28)
+  [seed017] Call mom [Personal] Priority: 2 (Due: 2026-11-20) [OVERDUE]
+  [seed019] Schedule HVAC service [Personal] Priority: 2 (Due: 2026-11-25)
+  [seed022] Dentist follow up [Health] Priority: 2 (Due: 2026-12-05)
+  [seed025] Deposit checks [Personal] Priority: 2 (Due: 2026-11-22) [OVERDUE]
+  [seed026] Attend webinar [Learning] Priority: 2 (Due: 2026-11-26)
+  [seed034] Schedule eye exam [Health] Priority: 2 (Due: 2026-12-10)
+  [seed037] Update will [Personal] Priority: 2 (Due: 2026-12-15)
+  [seed039] Missing due date [Personal] Priority: 2
+  [seed006] Call dentist [Health] Priority: 1 (Due: 2026-11-30)
+  [seed008] Plan vacation [Personal] Priority: 1 (Due: 2026-12-01)
+  [seed014] Water the plants [Personal] Priority: 1
+  [seed024] Laundry [Personal] Priority: 1
+  [seed029] Buy cat food [Personal] Priority: 1
+  [seed040] Empty title edge [General] Priority: 1
+
+Completed Tasks: 2
+  [seed013] Fix login bug [Work] Completed: 2026-11-23T10:34:01.039749
+  [seed007] Pay bills [Personal] Completed: 2026-11-23T10:34:01.039698
